@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pydantic-gamma"
+version = "0.1.0"
+description = "Admissibility grammar (Γ) for Pydantic models and pydantic-ai agents"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.9.0",
+    "starlette>=0.46.0",
+]
+
+[project.optional-dependencies]
+agent = [
+    "pydantic-ai>=0.4",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pydantic-ai[openai]>=0.4",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pydantic_gamma"]
